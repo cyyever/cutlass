@@ -323,7 +323,7 @@ struct alignas(1) float8_base {
             // normal
             exp += (FP32_EXPONENT_BIAS - FP8_EXPONENT_BIAS);
             f = f |
-                (exp << FP32_NUM_MANTISSA_BITS) |
+                unsigned(exp << FP32_NUM_MANTISSA_BITS) |
                 (mantissa << (FP32_NUM_MANTISSA_BITS-FP8_NUM_MANTISSA_BITS));
         } else if (exp == 0) {
             if (mantissa) {
