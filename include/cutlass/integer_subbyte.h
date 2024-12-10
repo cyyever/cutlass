@@ -69,16 +69,6 @@ struct integer_subbyte {
   // Default construction does NOT zero-initialize
   integer_subbyte() = default;
 
-  // Implicit conversion is DEPRECATED.
-  // Please use one of the two explicit constructors below.
-  template<class T,
-    class Enable = cutlass::platform::enable_if_t<cutlass::platform::is_convertible_v<T, int>>
-  >
-  [[deprecated("Implicit conversion is deprecated; please use explicit construction instead")]]
-  CUTLASS_HOST_DEVICE
-  integer_subbyte(T value)
-      : integer_subbyte(static_cast<xint_t>(value)) {}
-
   // CUTLASS code commonly converts both signed and unsigned integers
   // into integer_subbyte, so the class provides both explicit
   // conversions.
